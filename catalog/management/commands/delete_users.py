@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    # help = "** Brutally Annihilates Users By IDs  **"
+    help = "** Brutally Annihilates Users By IDs  **"
 
     def add_arguments(self, parser):
         parser.add_argument("user_id", type=int, nargs="*", help="Users IDs To Be Deleted")
