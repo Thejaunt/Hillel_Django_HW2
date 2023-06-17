@@ -36,7 +36,7 @@ class Product(models.Model):
 
 class Client(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product, through='ClientsProducts')
+    product = models.ManyToManyField(Product, through="ClientsProducts")
     email = models.EmailField(max_length=255)
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
