@@ -54,3 +54,6 @@ class ClientsProducts(models.Model):
 
     class Meta:
         UniqueConstraint(fields=["client", "product"], name="unique_clients_products")
+
+    def __str__(self):
+        return f"{self.client}, {self.product}"
