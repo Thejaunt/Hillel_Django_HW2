@@ -26,7 +26,7 @@ class Supplier(models.Model):
 
 class Product(models.Model):
     #  for now live it with expiry date now
-    exp_date = models.DateField(db_comment="Date when the product expires", default=timezone.now())  # Expiry date
+    exp_date = models.DateField(db_comment="Date when the product expires", default=timezone.now)  # Expiry date
     title = models.CharField(max_length=150)
     vendor_code = models.CharField(max_length=255)
 
