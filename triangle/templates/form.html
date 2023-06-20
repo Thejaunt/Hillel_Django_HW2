@@ -11,7 +11,12 @@
     {{ form.as_p }}
     <button type="submit">Calculate</button>
 </form>
-
-<p>Result: {{ res }}</p>
+<p>Result:
+{% if res %}
+ {{ res }}
+{% else %}
+None
+{% endif %}
+</p>
 </body>
 </html>
