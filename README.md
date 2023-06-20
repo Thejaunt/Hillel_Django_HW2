@@ -1,7 +1,7 @@
 # Hillel_Django_HW2
 Django homework for Hillel IT school. 
 
-
+![catalog.png](catalog.png)
 
 # Tasks to do
 
