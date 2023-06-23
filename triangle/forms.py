@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from .models import Person
+
 
 class TriangleForm(forms.Form):
     cath1 = forms.DecimalField(
@@ -21,3 +23,9 @@ class TriangleForm(forms.Form):
         if cath2 <= 0:
             raise ValidationError("Catheters must be greater than 0")
         return cath2
+
+
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = ["first_name", "last_name", "email"]
