@@ -1,7 +1,7 @@
 {% extends "index.html" %}
     {% block title %}Detail View{% endblock title %}
 {% block content %}
-<h1>Detail View</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Detail View</h1>
 <p>
     First Name: {{ obj.first_name }}
 </p>
@@ -11,5 +11,11 @@
 <p>
     Email: {{ obj.email }}
 </p>
-<a href="{% url 'update_person' obj.pk %}">Update</a>
+<p>
+    <a href="{% url 'update_person' obj.pk %}">Update</a>
+    <form method="POST" action="{% url 'delete-person' obj.pk %}">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+</p>
 {% endblock content %}

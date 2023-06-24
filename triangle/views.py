@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
@@ -45,3 +46,12 @@ def list_persons_view(request):
 def person_detail_view(request, pk):
     obj = get_object_or_404(Person, pk=pk)
     return render(request, "person_detail.html", {"obj": obj})
+
+
+def delete_person(request, pk):
+    if request.method == "POST":
+        obj = get_object_or_404(Person, pk=pk)
+        obj.delete()
+        return redirect(reverse("list_persons"))
+    else:
+        raise Http404
