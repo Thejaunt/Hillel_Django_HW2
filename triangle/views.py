@@ -55,4 +55,3 @@ def delete_person(request, pk):
         return redirect(reverse("list_persons"))
     else:
         raise Http404
-
