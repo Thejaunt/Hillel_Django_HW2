@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -43,7 +44,10 @@ def update_person(request, pk):
 
 
 def list_persons_view(request):
-    obj = Person.objects.all()
+    obj_list = Person.objects.all()
+    paginator = Paginator(obj_list, 5)
+    page_number = request.GET.get("page")
+    obj = paginator.get_page(page_number)
     return render(request, "person_list.html", {"obj": obj})
 
 
