@@ -38,7 +38,8 @@ def update_person(request, pk):
             if form.has_changed():
                 obj = form.save()
                 messages.success(request, "Person Has Been Updated")
-            messages.success(request, "Person Is Up To Date")
+            else:
+                messages.success(request, "Person Is Up To Date")
         return redirect(reverse("person-detail", args=[obj.pk]))
     return render(request, "update_person.html", {"form": form})
 
