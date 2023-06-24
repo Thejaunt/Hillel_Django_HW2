@@ -20,11 +20,11 @@ Open tab to http://127.0.0.1:8000 to see the main site
 * Load fixtures
   -  python3 manage.py loaddata fixtures/catalog.json --app catalog
   
-In case of UnicodeDecodeError - open the file; change encoding to utf-8; click on convert option
+In case of UnicodeDecodeError (Windows 11) - open the file; change encoding to utf-8; click on convert option
 
 # Triangle app
 ![triangle.png](graph-models%2Ftriangle.png)
 * Load fixtures
   - python3 manage.py loaddata fixtures/triangle.json --app triangle
   
-In case of UnicodeDecodeError - open the file; change encoding to utf-8; click on convert option
+In case of UnicodeDecodeError (Windows 11) - open the file; change encoding to utf-8; click on convert option
