@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+    {% block title %}Persons List{% endblock title %}
+{% block content %}
+<h1>Persons List</h1>
+{% for person in obj %}
+<p>
+    Name: {{ person.first_name }} {{ person.last_name }}
+</p>
+<p>
+    Email: {{ person.email }}
+</p>
+<a href="{% url 'person-detail' person.pk %}">Detail View</a>
+<hr>
+{% endfor %}
+{% endblock content %}

@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Form</title>
-</head>
-<body>
+{% extends "index.html" %}
+{% block title %}Find Hypotenuse{% endblock title %}
+{% block content%}
+<h1>Right Triangle Hypotenuse Finder</h1>
 
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Calculate</button>
 </form>
+
 <p>Result:
 {% if res %}
  {{ res }}
@@ -19,6 +17,4 @@ None
 {% endif %}
 </p>
 
-<a href="{% url 'person' %}">Person</a>
-</body>
-</html>
+{% endblock content %}

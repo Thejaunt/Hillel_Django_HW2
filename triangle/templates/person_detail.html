@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+    {% block title %}Detail View{% endblock title %}
+{% block content %}
+<h1>Detail View</h1>
+<p>
+    Name: {{ obj.fullname }}
+</p>
+<p>
+    Email: {{ obj.email }}
+</p>
+<a href="{% url 'update_person' obj.pk %}">Update</a>
+{% endblock content %}
