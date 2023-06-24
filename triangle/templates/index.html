@@ -5,9 +5,18 @@
     <title>{% block title %}Title{% endblock title %}</title>
 </head>
 <body>
-<a href="{% url 'find_hypotenuse' %}">Home |</a>
-<a href="{% url 'person' %}"> Create Person |</a>
-<a href="{% url 'list_persons' %}"> Persons List </a>
+<p>
+    <a href="{% url 'find_hypotenuse' %}">Home |</a>
+    <a href="{% url 'person' %}"> Create Person |</a>
+    <a href="{% url 'list_persons' %}"> Persons List </a>
+</p>
+<p>
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+</p>
 
 {% block content %}
 {% endblock content %}
