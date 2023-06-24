@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -23,6 +24,7 @@ def create_person(request):
     if request.method == "POST":
         if form.is_valid():
             obj = form.save()
+            messages.success(request, "Person Has Been Created")
             return redirect(reverse("person-detail", args=[obj.pk]))
     return render(request, "create_person.html", {"form": form})
 
@@ -34,6 +36,8 @@ def update_person(request, pk):
         if form.is_valid():
             if form.has_changed():
                 obj = form.save()
+                messages.success(request, "Person Has Been Updated")
+            messages.success(request, "Person Is Up To Date")
         return redirect(reverse("person-detail", args=[obj.pk]))
     return render(request, "update_person.html", {"form": form})
 
@@ -52,6 +56,7 @@ def delete_person(request, pk):
     if request.method == "POST":
         obj = get_object_or_404(Person, pk=pk)
         obj.delete()
+        messages.success(request, "Person Has Been Deleted")
         return redirect(reverse("list_persons"))
     else:
         raise Http404
