@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock title %}</title>
+</head>
+<body>
+<a href="{% url 'find_hypotenuse' %}">Home |</a>
+<a href="{% url 'person' %}"> Create Person |</a>
+<a href="{% url 'list_persons' %}"> Persons List </a>
+
+{% block content %}
+{% endblock content %}
+
+</body>
+</html>

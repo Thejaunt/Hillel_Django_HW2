@@ -22,7 +22,7 @@ def create_person(request):
     if request.method == "POST":
         if form.is_valid():
             obj = form.save()
-            return redirect(reverse("update_person", args=[obj.pk]))
+            return redirect(reverse("person-detail", args=[obj.pk]))
     return render(request, "create_person.html", {"form": form})
 
 
@@ -33,5 +33,15 @@ def update_person(request, pk):
         if form.is_valid():
             if form.has_changed():
                 obj = form.save()
-        return redirect(reverse("update_person", args=[obj.pk]))
+        return redirect(reverse("person-detail", args=[obj.pk]))
     return render(request, "update_person.html", {"form": form})
+
+
+def list_persons_view(request):
+    obj = Person.objects.all()
+    return render(request, "person_list.html", {"obj": obj})
+
+
+def person_detail_view(request, pk):
+    obj = get_object_or_404(Person, pk=pk)
+    return render(request, "person_detail.html", {"obj": obj})
