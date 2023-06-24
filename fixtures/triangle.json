@@ -1,0 +1,47 @@
+[
+{
+  "model": "triangle.person",
+  "pk": 1,
+  "fields": {
+    "first_name": "Serjio",
+    "last_name": "Milov",
+    "email": "serjiomilov@gmail.com"
+  }
+},
+{
+  "model": "triangle.person",
+  "pk": 2,
+  "fields": {
+    "first_name": "dd",
+    "last_name": "dd",
+    "email": "dd@dd.dd"
+  }
+},
+{
+  "model": "triangle.person",
+  "pk": 3,
+  "fields": {
+    "first_name": "Serjio",
+    "last_name": "Milov",
+    "email": "serjiomilovv@gmail.com"
+  }
+},
+{
+  "model": "triangle.person",
+  "pk": 4,
+  "fields": {
+    "first_name": "test7",
+    "last_name": "test9",
+    "email": "test1@test.com"
+  }
+},
+{
+  "model": "triangle.person",
+  "pk": 5,
+  "fields": {
+    "first_name": "ff",
+    "last_name": "ff",
+    "email": "test2@test.com"
+  }
+}
+]
