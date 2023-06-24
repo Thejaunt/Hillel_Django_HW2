@@ -12,7 +12,7 @@ Assuming you have Python setup, run the following commands
 Open tab to http://127.0.0.1:8000 to see the main site
 
 # Catalog app
-![catalog.png](catalog.png)
+![catalog.png](graph-models%2Fcatalog.png)
 * Custom management commands:
   - python3 manage.py create_users {number from 1-10}
   - python3 manage.py delete_users {list of user ids to be deleted} (1 2 5) Except superuser
@@ -21,5 +21,6 @@ Open tab to http://127.0.0.1:8000 to see the main site
   -  python3 manage.py loaddata fixtures-catalog.json --app catalog
 
 # Triangle app
+![triangle.png](graph-models%2Ftriangle.png)
 * Load fixtures
   - python3 manage.py loaddata fixtures-triangle.json --app triangle
