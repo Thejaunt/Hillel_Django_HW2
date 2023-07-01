@@ -25,7 +25,6 @@ class Supplier(models.Model):
 
 
 class Product(models.Model):
-    #  for now live it with expiry date now
     exp_date = models.DateField(db_comment="Date when the product expires", default=timezone.now)  # Expiry date
     title = models.CharField(max_length=150)
     vendor_code = models.CharField(max_length=255)
@@ -49,7 +48,6 @@ class Client(models.Model):
 
 
 class ClientsProducts(models.Model):
-    #  name - Orders?
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
