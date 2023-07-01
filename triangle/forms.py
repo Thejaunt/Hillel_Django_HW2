@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Person
+from .models import LogTriangle, Person
 
 
 class TriangleForm(forms.Form):
@@ -29,3 +29,16 @@ class PersonForm(forms.ModelForm):
     class Meta:
         model = Person
         fields = ["first_name", "last_name", "email"]
+
+
+class LogTriangleForm(forms.ModelForm):
+    class Meta:
+        model = LogTriangle
+        fields = [
+            "request",
+            "method",
+            "bad_method",
+            "path",
+            "query",
+            "body",
+        ]
