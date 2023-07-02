@@ -37,7 +37,6 @@ class LogTriangleForm(forms.ModelForm):
         fields = [
             "request",
             "method",
-            "bad_method",
             "path",
             "query",
             "body",
