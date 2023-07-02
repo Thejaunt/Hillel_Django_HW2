@@ -1,5 +1,7 @@
 import json
 
+from django.urls import reverse
+
 from triangle.models import LogTriangle
 
 
@@ -8,8 +10,10 @@ class LogMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        exclude = ("/admin/", "/__debug__/")
-        if any([request.path.startswith(x) for x in exclude]):
+        def starts_reverse_url(url: str) -> bool:
+            return request.path.startswith(reverse(url))
+
+        if starts_reverse_url("admin:index") or starts_reverse_url("djdt:render_panel"):
             return self.get_response(request)
 
         data: dict = {str(x): str(request.__dict__.get(x)) for x in list(request.__dict__) if x != "environ"}
