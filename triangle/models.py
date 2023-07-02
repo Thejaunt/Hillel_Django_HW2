@@ -22,7 +22,6 @@ class LogTriangle(models.Model):
 
     request = models.JSONField()
     method = models.CharField(max_length=7, choices=AllowedMethods.choices)
-    bad_method = models.BooleanField(default=True)
     path = models.TextField(default="-")
     query = models.TextField(default="-")
     body = models.TextField(default="-")
@@ -30,12 +29,13 @@ class LogTriangle(models.Model):
     response_status = models.IntegerField(default=200)
 
     def __str__(self):
-        return f"{self.method} {self.bad_method} {self.response_status}"
-
-    def save(self, *args, **kwargs):
-        if self.method in [m[0] for m in self.AllowedMethods.choices]:
-            self.bad_method = False
-        super().save(*args, **kwargs)
+        return f"{self.method} {self.response_status}"
 
     def allowed_method(self):
         return self.method in {self.AllowedMethods.GET, self.AllowedMethods.POST}
+
+    @property
+    def bad_method(self):
+        if self.method not in [x[0] for x in self.AllowedMethods.choices]:
+            return True
+        return False

@@ -26,9 +26,9 @@ class SortByMethodFilter(admin.SimpleListFilter):
 
 class LogTriangleAdmin(admin.ModelAdmin):
     form = LogTriangleForm
-    fields = ["response_status", "bad_method", "path", "query", "body", "request"]
-    readonly_fields = ["timestamp", "bad_method", "method"]
-    list_display = ["display_method", "response_status", "timestamp", "bad_method", "path", "query", "body"]
+    fields = ["response_status", "path", "query", "body", "request"]
+    readonly_fields = ["timestamp", "method"]
+    list_display = ["display_method", "response_status", "timestamp", "path", "query", "body"]
     list_filter = (
         SortByMethodFilter,
         "response_status",
