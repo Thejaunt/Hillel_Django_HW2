@@ -26,9 +26,10 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
+    fields = ["name", "rating", "price", "pages", "pubdate"]
     search_fields = ["rating", "price", "pubdate"]
     filter_vertical = ["authors"]
-    list_display = ["rating", "name", "price", "pubdate", "pages", "publisher"]
+    list_display = ["rating", "name", "price", "pubdate", "pages", "publisher", "get_authors"]
     list_display_links = ["name"]
     list_select_related = ["publisher"]
     autocomplete_fields = ["authors"]
@@ -39,6 +40,14 @@ class BookAdmin(admin.ModelAdmin):
         "rating",
         "price",
     ]
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.prefetch_related("authors")
+
+    @staticmethod
+    def get_authors(obj):
+        return " | ".join([i.name for i in obj.authors.all()])
 
 
 class PublisherAdmin(admin.ModelAdmin):
