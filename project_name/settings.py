@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "catalog",
     "triangle",
+    "bookstore",
     "debug_toolbar",
 ]
 

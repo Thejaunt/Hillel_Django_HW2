@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Bookstores Home Page{% endblock title %}</title>
+
+</head>
+<body>
+<p>
+    <a href="{% url 'bookstore:bookstore_home' %}">Home</a>
+    <a href="{% url 'bookstore:authors_list' %}">Authors</a>
+    <a href="{% url 'bookstore:publishers' %}">Publishers</a>
+    <a href="{% url 'bookstore:books' %}">Books</a>
+    <a href="{% url 'bookstore:stores' %}">Stores</a>
+</p>
+
+
+{% block content %}
+{% endblock content %}
+</body>
+</html>

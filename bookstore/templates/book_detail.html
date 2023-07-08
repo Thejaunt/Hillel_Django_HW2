@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Book detail{% endblock title %}
+{% block content %}
+<h1>{{ obj.name }}</h1>
+
+<p>Number of pages: {{ obj.pages }}</p>
+<p>Price: {{ obj.price }}</p>
+<p>Rating: {{ obj.rating }}</p>
+<p>Publication date: {{ obj.pubdate }}</p>
+<p>Being sold in {{ obj.n_stores }} stores: </p>
+    {% for store in obj.store_set.all %}
+        | <a href="{% url 'bookstore:store' store.pk %}">{{ store.name }}</a> |
+
+    {% endfor %}
+<p>
+    authors({{ obj.n_authors }}):</p>
+    {% if obj.authors %}
+        {% for auth in obj.authors.all %}
+            |  <a href="{% url 'bookstore:author' auth.pk %}">{{ auth.name }}</a> |
+
+        {% endfor %}
+    {% endif %}
+
+
+
+
+{% endblock content %}

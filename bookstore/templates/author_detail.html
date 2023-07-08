@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Author Details{% endblock title %}
+{% block content %}
+<h1>{{ obj.name }}</h1>
+<p>Age: {{ obj.age }}</p>
+<p>Books({{ obj.n_books }}):<br>
+        {% if obj.book_set.all %}
+            {% for book in obj.book_set.all %}
+            | <a href="{% url 'bookstore:book' book.pk%}">{{ book.name }}</a> |<br>
+
+            {% endfor %}
+        {% else %}
+        No books
+        {% endif %}
+    </p>
+
+{% endblock content %}

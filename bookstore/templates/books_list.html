@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Authors List{% endblock title %}
+{% block content %}
+<h1>{{ num.books }} Books List</h1>
+
+{% for obj in page_obj %}
+<h3>{{ obj.name }}</h3>
+   <p>Pages: {{ obj.pages }}</p>
+    <p>Price: {{ obj.price }}</p>
+    <p>Rating: {{ obj.rating }}</p>
+    <p>Publication date: {{ obj.pubdate }}</p>
+    <p>Authors({{ obj.n_auth }})
+        {% if not obj.authors.all %}
+            Unknown
+
+        {% endif %}
+    </p>
+
+    <a href="{% url 'bookstore:book' obj.pk%}">Details</a>
+<hr>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}
