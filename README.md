@@ -42,7 +42,8 @@ You can specify amount of entries for each model. But not more than 10_000 entri
 
 Will create relations for 100 randomly chosen from database books
   I'm still working on it. But for now entries are created without relations.
-  You can specify amount of already existing in DB books and --create_relations will create rrelations for random book
+  You can specify amount of already existing in DB books and --create_relations will create rrelations for random books
+. choices[1, 10_000]
 
 * Load fixtures
   - python3 manage.py loaddata fixtures/bookstore.json --app bookstore
