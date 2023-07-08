@@ -28,3 +28,23 @@ In case of UnicodeDecodeError (Windows 11) - open the file; change encoding to u
   - python3 manage.py loaddata fixtures/triangle.json --app triangle
   
 In case of UnicodeDecodeError (Windows 11) - open the file; change encoding to utf-8; click on convert option
+
+# Bookstore app
+![bookstore.png](graph-models%2Fbookstore.png)
+* Custom management commands:
+  - python3 manage.py create_data
+  
+will create 100 new entries for each model(Author, Publisher, Book, Store)
+  - python3 manage.py create_data --author 1000 --book 500
+
+You can specify amount of entries for each model. But not more than 10_000 entries
+  - python3 manage create_data --create_relations 100
+
+Will create relations for 100 randomly chosen from database books
+  I'm still working on it. But for now entries are created without relations.
+  You can specify amount of already existing in DB books and --create_relations will create rrelations for random book
+
+* Load fixtures
+  - python3 manage.py loaddata fixtures/bookstore.json --app bookstore
+
+In case of UnicodeDecodeError (Windows 11) - open  the file; change encoding to utf-8; click on convert option
