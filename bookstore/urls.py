@@ -1,10 +1,16 @@
 from django.urls import path
 
-from .views import (author_detail, author_list,
-                    book_detail, book_list,
-                    bookstore_home,
-                    publisher_detail, publisher_list,
-                    store_detail, store_list,)
+from .views import (
+    author_detail,
+    author_list,
+    book_detail,
+    book_list,
+    bookstore_home,
+    publisher_detail,
+    publisher_list,
+    store_detail,
+    store_list,
+)
 
 
 app_name = "bookstore"
