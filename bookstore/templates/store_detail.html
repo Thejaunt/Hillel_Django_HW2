@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Store detail{% endblock title %}
+{% block content %}
+<h1>{{ obj.name }}</h1>
+<p>Books in store {{ obj.n_books }}</p>
+
+{% for book in obj.books.all %}
+   {{ book.rating }}| <a href="{% url 'bookstore:book' book.pk %} ">{{ book.name }}</a> | pages:{{ book.pages }}
+   | price: {{ book.price }}<br>
+
+{% endfor %}
+{% endblock content %}

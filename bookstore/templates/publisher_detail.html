@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Publisher Details{% endblock title %}
+{% block content %}
+<h1>{{ obj.name }}</h1>
+ <p>
+        Books({{ obj.num_book}}):<br>
+        {% if  obj.book_set.all %}
+            {% for book in  obj.book_set.all%}
+           <h3>{{ book.name }}</h3> <br> authors:
+                {% for auth in book.authors.all %}
+                          | <a href="{% url 'bookstore:author' auth.pk%}">{{ auth.name }}</a> |
+
+                {% endfor %}
+        <hr>
+     <br>
+            {% endfor %}
+        {% else %}
+        No books
+        {% endif %}
+ </p>
+
+<p>
+    Authors published({{ obj.num_auth }}):
+
+</p>
+{% endblock content %}
