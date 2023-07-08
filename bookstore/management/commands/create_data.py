@@ -13,11 +13,13 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--authors", type=int, choices=range(0, 1001), default=0, help="Amount of new authors to create"
+            "--authors", type=int, choices=range(0, 10_001), default=100, help="Amount of new authors to create"
         )
-        parser.add_argument("--publishers", type=int, choices=range(0, 101), default=0, help="Amount of new publishers")
-        parser.add_argument("--books", type=int, choices=range(0, 10_001), default=0, help="Amount of new books")
-        parser.add_argument("--stores", type=int, choices=range(0, 1001), default=0, help="Amount of new stores")
+        parser.add_argument(
+            "--publishers", type=int, choices=range(0, 10_001), default=100, help="Amount of new publishers"
+        )
+        parser.add_argument("--books", type=int, choices=range(0, 10_000), default=100, help="Amount of new books")
+        parser.add_argument("--stores", type=int, choices=range(0, 10_000), default=100, help="Amount of new stores")
         parser.add_argument(
             "--create_relations", type=int, nargs="?", choices=range(0, 10_000), default=0, help="Create with relations"
         )
@@ -58,7 +60,7 @@ class Command(BaseCommand):
         num_rel = options.get("create_relations")
         if num_rel is None:
             sys.stdout.write(
-                self.style.ERROR("[ERROR]: Please specify amount of relations you want to create [1, 100]")
+                self.style.ERROR("[ERROR]: Please specify amount of relations you want to create [1, 10000]")
             )
             return None
 

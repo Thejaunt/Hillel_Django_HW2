@@ -6,6 +6,9 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
 
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return self.name
 
@@ -27,6 +30,9 @@ class Book(models.Model):
     pubdate = models.DateField()
 
     objects = models.Manager()
+
+    class Meta:
+        ordering = ["rating", "price"]
 
     def __str__(self):
         return self.name
