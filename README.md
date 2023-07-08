@@ -47,4 +47,4 @@ Will create relations for 100 randomly chosen from database books
 * Load fixtures
   - python3 manage.py loaddata fixtures/bookstore.json --app bookstore
 
-In case of UnicodeDecodeError (Windows 11) - open the file; change encoding to utf-8; click on convert option
+In case of UnicodeDecodeError (Windows 11) - open  the file; change encoding to utf-8; click on convert option
