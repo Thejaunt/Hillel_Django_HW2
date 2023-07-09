@@ -26,7 +26,6 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-
         num_rel = options.get("create_relations")
         if num_rel is None:
             sys.stdout.write(
