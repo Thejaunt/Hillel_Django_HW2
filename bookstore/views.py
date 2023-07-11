@@ -1,7 +1,9 @@
 from django.core.paginator import Paginator
 from django.db.models import Count
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 
+from .forms import ContactForm
 from .models import Author, Book, Publisher, Store
 
 
@@ -84,3 +86,12 @@ def store_detail(request, pk):
         pk=pk,
     )
     return render(request, "store_detail.html", {"obj": obj})
+
+
+def contact_us(request):
+    form = ContactForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            form.send_email()
+            return redirect(reverse("bookstore:bookstore_home"))
+    return render(request, "contact.html", {"form": form})
