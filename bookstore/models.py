@@ -6,6 +6,8 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
 
+    objects = models.Manager()
+
     class Meta:
         ordering = ["name"]
 
@@ -15,6 +17,8 @@ class Author(models.Model):
 
 class Publisher(models.Model):
     name = models.CharField(max_length=300)
+
+    objects = models.Manager()
 
     def __str__(self):
         return self.name
@@ -28,7 +32,6 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     rating = models.FloatField()
     pubdate = models.DateField()
-
     objects = models.Manager()
 
     class Meta:
@@ -42,6 +45,8 @@ class Store(models.Model):
     books = models.ManyToManyField(Book, through="StoreBook")
     name = models.CharField(max_length=300)
 
+    objects = models.Manager()
+
     def __str__(self):
         return self.name
 
@@ -49,6 +54,8 @@ class Store(models.Model):
 class BookAuthor(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+    objects = models.Manager()
 
     class Meta:
         UniqueConstraint(fields=["book", "author"], name="unique_book_author")
@@ -60,6 +67,7 @@ class BookAuthor(models.Model):
 class StoreBook(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    objects = models.Manager()
 
     class Meta:
         UniqueConstraint(fields=["store", "book"], name="unique_store_book")

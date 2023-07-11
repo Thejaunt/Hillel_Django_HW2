@@ -6,6 +6,7 @@ from .views import (
     book_detail,
     book_list,
     bookstore_home,
+    contact_us,
     publisher_detail,
     publisher_list,
     store_detail,
@@ -16,6 +17,7 @@ from .views import (
 app_name = "bookstore"
 urlpatterns = [
     path("", bookstore_home, name="bookstore_home"),
+    path("contact-us", contact_us, name="contact"),
     path("authors", author_list, name="authors_list"),
     path("author/<int:pk>", author_detail, name="author"),
     path("publishers", publisher_list, name="publishers"),

@@ -1,3 +1,4 @@
+import datetime
 from pathlib import Path
 import os
 
@@ -33,6 +34,7 @@ INSTALLED_APPS = [
     "triangle",
     "bookstore",
     "debug_toolbar",
+    "django_celery_results",
 ]
 
 
@@ -44,7 +46,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "triangle.middlewares.LogMiddleware",
+    # "triangle.middlewares.LogMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
@@ -108,6 +110,20 @@ STATIC_URL = "static/"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 60 * 60 * 24 * 2  # 2 days
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", default="amqp://guest:guest@localhost:5672")
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", default="redis://localhost:6379")
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL = "test@test.com"
 
 
 if DEBUG:
