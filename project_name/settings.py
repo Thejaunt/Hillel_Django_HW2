@@ -1,4 +1,3 @@
-import datetime
 from pathlib import Path
 import os
 
@@ -33,6 +32,7 @@ INSTALLED_APPS = [
     "catalog",
     "triangle",
     "bookstore",
+    "scrapping",
     "debug_toolbar",
     "django_celery_results",
 ]
@@ -110,6 +110,14 @@ STATIC_URL = "static/"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}
 
 
 CELERY_TIMEZONE = TIME_ZONE
