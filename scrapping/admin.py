@@ -4,7 +4,7 @@ from .models import Author, Quote, Tag
 
 
 class QuoteAdmin(admin.ModelAdmin):
-    fields = ["title", "author", ]
+    fields = ["title", "author"]
     list_display = ["title", "author", "get_tags"]
     list_display_links = ["title"]
     list_select_related = ["author"]
