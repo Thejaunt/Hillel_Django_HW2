@@ -19,8 +19,7 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat_schedule = {
     "add-every-30-seconds": {
         "task": "scrapping.tasks.scrap_scrap",
-        # "schedule": crontab(minute="*"),
-        "schedule": crontab(hour="*/3,1-23"),
+        "schedule": crontab(hour="1-23/2"),
     },
 }
 
