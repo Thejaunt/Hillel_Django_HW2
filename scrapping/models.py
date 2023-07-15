@@ -13,7 +13,7 @@ class Author(models.Model):
 
 
 class Quote(models.Model):
-    author = models.ForeignKey("Quote", on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     tags = models.ManyToManyField("Tag", through="QuotesTags")
 
